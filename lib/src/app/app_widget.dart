@@ -8,6 +8,7 @@ class AppWidget extends StatelessWidget {
       title: 'Flutter Slidy',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.grey[850],
       ),
       home: LoginPage(),
     );

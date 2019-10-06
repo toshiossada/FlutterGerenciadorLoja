@@ -1,4 +1,8 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -50,18 +54,21 @@ class _HomePageState extends State<HomePage> {
             ]),
       ),
       body: Scaffold(
-        body: PageView(
-          onPageChanged: (p) {
-            setState(() {
-              _page = p;
-            });
-          },
-          controller: _pageController,
-          children: <Widget>[
-            Container(color: Colors.red),
-            Container(color: Colors.yellow),
-            Container(color: Colors.green),
-          ],
+        backgroundColor: Colors.grey[850],
+        body: SafeArea(
+          child: PageView(
+            onPageChanged: (p) {
+              setState(() {
+                _page = p;
+              });
+            },
+            controller: _pageController,
+            children: <Widget>[
+              UsersTab(),
+              Container(color: Colors.yellow),
+              Container(color: Colors.green),
+            ],
+          ),
         ),
       ),
     );
