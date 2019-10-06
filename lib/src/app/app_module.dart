@@ -1,3 +1,4 @@
+import 'package:gerenciamento_loja/src/app/pages/Home/home_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/login/components/input_field/input_field_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/login/login_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
@@ -9,6 +10,7 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => HomeBloc()),
         Bloc((i) => InputFieldBloc()),
         Bloc((i) => LoginBloc()),
         Bloc((i) => AppBloc()),

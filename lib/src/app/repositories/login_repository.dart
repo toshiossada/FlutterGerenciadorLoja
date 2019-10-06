@@ -9,9 +9,8 @@ class LoginRepository extends Disposable {
 
   Future<AuthResult> login(
       {@required String email, @required String pass}) async {
-    
-    var result = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email, password: pass);
+    var result =
+        await instance.signInWithEmailAndPassword(email: email, password: pass);
     return result;
   }
 

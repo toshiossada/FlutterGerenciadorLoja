@@ -1,1 +1,1 @@
-enum LoginState { IDLE, LOADING, SUCCESS, FAIL }
+enum LoginState { INITIAL, IDLE, LOADING, SUCCESS, FAIL }

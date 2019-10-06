@@ -29,6 +29,7 @@ class LoginBloc extends BlocBase with LoginValidator {
   StreamSubscription _streamSubscription;
 
   LoginBloc() {
+    
     registerListens();
   }
 
@@ -40,10 +41,10 @@ class LoginBloc extends BlocBase with LoginValidator {
           _stateController.add(LoginState.SUCCESS);
         } else {
           _loginRepository.instance.signOut();
-          _stateController.add(LoginState.IDLE);
+          _stateController.add(LoginState.FAIL);
         }
       } else {
-        _stateController.add(LoginState.FAIL);
+        _stateController.add(LoginState.IDLE);
       }
     });
   }
@@ -56,6 +57,18 @@ class LoginBloc extends BlocBase with LoginValidator {
     _stateController.add(LoginState.LOADING);
     try {
       var user = await _loginRepository.login(email: email, pass: pass);
+
+      // if (user != null) {
+      //   if (await verifyPrivileges(user.user)) {
+      //     _stateController.add(LoginState.SUCCESS);
+      //   } else {
+      //     _loginRepository.instance.signOut();
+      //     _stateController.add(LoginState.FAIL);
+      //   }
+      // } else {
+      //   _stateController.add(LoginState.IDLE);
+      // }
+
       return user;
          
     } catch (e) {
