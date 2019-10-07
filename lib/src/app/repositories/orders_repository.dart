@@ -13,6 +13,15 @@ class OrderRepository extends Disposable {
     _firestore.collection(_colletion).snapshots().listen(f);
   }
 
+  void updateData(DocumentSnapshot order, String field, dynamic value) {
+    order.reference.updateData({field: value});
+  }
+
+  void delete(DocumentSnapshot order){
+    order.reference.delete();
+  }
+  
+
   @override
   void dispose() {}
 }

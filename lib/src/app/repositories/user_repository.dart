@@ -18,6 +18,14 @@ class UserRepository extends Disposable {
     _firestore.collection(_colletion).snapshots().listen(f);
   }
 
+  Future<DocumentSnapshot> getUser(String uid) async{
+    return await _firestore.collection(_colletion).document(uid).get();
+  }
+
+  deleteOrders(String uid, String oid) async{
+    return await _firestore.collection(_colletion).document(uid).collection('orders').document(oid).delete();
+  }
+
   @override
   void dispose() {}
 }

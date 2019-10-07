@@ -1,16 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab_bloc.dart';
 
 class OrderHeaderWidget extends StatelessWidget {
+  final DocumentSnapshot order;
+  final _userBloc = AppModule.to.getBloc<UsersTabBloc>();
+
+  OrderHeaderWidget(this.order);
+
   @override
   Widget build(BuildContext context) {
+    var user = _userBloc.getUser(order.data['clientId']);
     return Row(
       children: <Widget>[
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text('Toshi'),
-              Text('Rua Filipinas, 428'),
+              Text(user['name']),
+              Text(user['address']),
             ],
           ),
         ),
@@ -18,11 +27,11 @@ class OrderHeaderWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Text(
-              'Preço Produtos',
+              'Produtos: R\$${order.data['produtcsPrice'].toStringAsFixed(2)}',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
             Text(
-              'Preço total',
+              'Total R\$${order.data['totalPrice'].toStringAsFixed(2)} ',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
           ],

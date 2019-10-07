@@ -79,11 +79,15 @@ class UsersTabBloc extends BlocBase {
     }
   }
 
+  Map<String, dynamic> getUser(String uid) {
+    return _users[uid];
+  }
+
   List<Map<String, dynamic>> _filter(String search) {
     List<Map<String, dynamic>> filteredUsers =
         List.from(_users.values.toList());
-    filteredUsers.retainWhere(
-        (user) => user["name"].toUpperCase().contains(search.toUpperCase()) ||
+    filteredUsers.retainWhere((user) =>
+        user["name"].toUpperCase().contains(search.toUpperCase()) ||
         user["email"].toUpperCase().contains(search.toUpperCase()));
     return filteredUsers;
   }

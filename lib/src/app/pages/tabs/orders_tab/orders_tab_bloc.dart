@@ -2,6 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/repositories/orders_repository.dart';
+import 'package:gerenciamento_loja/src/app/repositories/user_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class OrdersTabBloc extends BlocBase {
@@ -10,6 +11,7 @@ class OrdersTabBloc extends BlocBase {
 
   Stream<List> get outOrders => _ordersController.stream;
   var _ordersRepository = AppModule.to.getDependency<OrderRepository>();
+  var _userRepository = AppModule.to.getDependency<UserRepository>();
 
   OrdersTabBloc() {
     _addOrdersListener();
@@ -36,6 +38,17 @@ class OrdersTabBloc extends BlocBase {
         _ordersController.add(_orders);
       });
     });
+  }
+
+  void updateData(DocumentSnapshot order, String field, dynamic value) {
+    _ordersRepository.updateData(order, field, value);
+  }
+
+  Future<void> delete(
+      DocumentSnapshot order) async {
+    await _userRepository.deleteOrders(order['clientId'], order.documentID);
+
+    _ordersRepository.delete(order);
   }
 
   //dispose will be called automatically by closing its streams
