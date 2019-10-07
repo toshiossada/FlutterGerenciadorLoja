@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/pages/product/components/images/images_widget.dart';
 import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
 
 class ProductPage extends StatefulWidget {
@@ -64,6 +65,16 @@ class _ProductPageState extends State<ProductPage> {
             return ListView(
               padding: EdgeInsets.all(16),
               children: <Widget>[
+                Text(
+                  "Imagens",
+                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                ),
+                ImagesWidget(
+                  context: context,
+                  initialValue: snapshot.data["images"],
+                  onSaved: null,
+                  validator: null,
+                ),
                 TextFormField(
                   initialValue: snapshot.data['title'],
                   style: _fieldStyle,

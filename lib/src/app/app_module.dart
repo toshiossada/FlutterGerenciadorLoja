@@ -1,3 +1,4 @@
+import 'package:gerenciamento_loja/src/app/pages/product/components/images/images_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/repositories/product_repository.dart';
@@ -23,6 +24,7 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => ImagesBloc()),
         Bloc((i) => ProductBloc()),
         Bloc((i) => CategoryTileBloc()),
         Bloc((i) => ProductBloc()),
