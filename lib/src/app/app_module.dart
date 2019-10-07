@@ -1,3 +1,5 @@
+import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_header/order_header_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_tile/order_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/orders_tab_bloc.dart';
@@ -17,6 +19,8 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => OrderBloc()),
+        Bloc((i) => UserBloc()),
         Bloc((i) => OrderHeaderBloc()),
         Bloc((i) => OrderTileBloc()),
         Bloc((i) => OrdersTabBloc()),

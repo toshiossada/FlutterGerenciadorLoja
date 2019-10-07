@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab_bloc.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 
 class OrderHeaderWidget extends StatelessWidget {
   final DocumentSnapshot order;
-  final _userBloc = AppModule.to.getBloc<UsersTabBloc>();
+  final _userBloc = AppModule.to.getBloc<UserBloc>();
 
   OrderHeaderWidget(this.order);
 

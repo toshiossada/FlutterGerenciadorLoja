@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_tile/order_tile_widget.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/orders_tab_bloc.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 
 class OrdersTab extends StatelessWidget {
-  final _ordersBloc = AppModule.to.getBloc<OrdersTabBloc>();
+  final _ordersBloc = AppModule.to.getBloc<OrderBloc>();
 
   @override
   Widget build(BuildContext context) {

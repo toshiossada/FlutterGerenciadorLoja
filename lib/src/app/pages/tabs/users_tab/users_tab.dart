@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/components/user_tile/user_tile_widget.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab_bloc.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 
 class UsersTab extends StatelessWidget {
-  var _userBloc = AppModule.to.getBloc<UsersTabBloc>();
+  var _userBloc = AppModule.to.getBloc<UserBloc>();
 
   @override
   Widget build(BuildContext context) {
