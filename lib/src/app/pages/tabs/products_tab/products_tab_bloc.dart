@@ -1,7 +1,15 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/repositories/product_repository.dart';
 
 class ProductsTabBloc extends BlocBase {
-  //dispose will be called automatically by closing its streams
+  final _productRepository = AppModule.to.getDependency<ProductRepository>();
+
+  Future<QuerySnapshot> getDocuments() {
+    return _productRepository.getDocuments();
+  }
+
   @override
   void dispose() {
     super.dispose();

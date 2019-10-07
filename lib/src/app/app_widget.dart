@@ -9,6 +9,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         backgroundColor: Colors.grey[850],
+        appBarTheme: AppBarTheme(color: Colors.pinkAccent),
       ),
       home: LoginPage(),
     );

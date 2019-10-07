@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_widget.dart';
-import 'package:gerenciamento_loja/src/app/shared/blocs/product_bloc.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/products_tab_bloc.dart';
 
 class ProductsTab extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class ProductsTab extends StatefulWidget {
 }
 
 class _ProductsTabState extends State<ProductsTab> with AutomaticKeepAliveClientMixin{
-  final _productBloc = AppModule.to.getBloc<ProductBloc>();
+  final _productBloc = AppModule.to.getBloc<ProductsTabBloc>();
 
   @override
   Widget build(BuildContext context) {

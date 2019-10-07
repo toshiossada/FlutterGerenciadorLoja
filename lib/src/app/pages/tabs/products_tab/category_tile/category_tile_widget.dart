@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/shared/blocs/product_bloc.dart';
+import 'package:gerenciamento_loja/src/app/pages/product/product_page.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_bloc.dart';
 
 class CategoryTileWidget extends StatelessWidget {
   final DocumentSnapshot category;
-  final _productBloc = AppModule.to.getBloc<ProductBloc>();
+  final _productBloc = AppModule.to.getBloc<CategoryTileBloc>();
 
   CategoryTileWidget(this.category);
 
@@ -28,25 +29,52 @@ class CategoryTileWidget extends StatelessWidget {
             FutureBuilder<QuerySnapshot>(
               future: _productBloc.getItems(category),
               builder: (context, snapshot) {
-                if (!snapshot.hasData || snapshot.data.documents.length == 0)
-                  return Container(
-                    child: Text('Sem Items'),
-                  );
+                if (!snapshot.hasData)
+                  return Container();
                 else
                   return Column(
                     children: snapshot.data.documents
                         .map((doc) => ListTile(
                               leading: CircleAvatar(
-                                backgroundImage: 
-                                    NetworkImage(doc.data['images'] != null ? doc.data['images'][0] : 'https://bigsamsrawbar.com/wp-content/plugins/wordpress-ecommerce/marketpress-includes/images/default-product.png'),
+                                backgroundImage: NetworkImage(doc
+                                            .data['images'] !=
+                                        null
+                                    ? doc.data['images'][0]
+                                    : 'https://bigsamsrawbar.com/wp-content/plugins/wordpress-ecommerce/marketpress-includes/images/default-product.png'),
                                 backgroundColor: Colors.transparent,
                               ),
                               title: Text(doc.data['title']),
                               trailing: Text(
                                   'R\$${doc.data['price'].toStringAsFixed(2)}'),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProductPage(
+                                              categoryId: category.documentID,
+                                              product: doc,
+                                            )));
+                              },
                             ))
-                        .toList(),
+                        .toList()
+                          ..add(ListTile(
+                            leading: CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.pinkAccent,
+                              ),
+                            ),
+                            title: Text('Adicionar'),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductPage(
+                                            categoryId: category.documentID,
+                                          )));
+                            },
+                          )),
                   );
               },
             ),
