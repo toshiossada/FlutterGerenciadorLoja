@@ -1,8 +1,6 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/orders_tab.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab.dart';
-import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,7 +63,7 @@ class _HomePageState extends State<HomePage> {
             controller: _pageController,
             children: <Widget>[
               UsersTab(),
-              Container(color: Colors.yellow),
+              OrdersTab(),
               Container(color: Colors.green),
             ],
           ),

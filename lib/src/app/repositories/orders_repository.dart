@@ -3,9 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OrderRepository extends Disposable {
   var _firestore = Firestore.instance;
+  final String _colletion = 'orders';
 
-  Future<DocumentSnapshot> get(String documentId) async{
-    return await _firestore.collection('orders').document(documentId).get();
+  Future<DocumentSnapshot> get({String documentId}) async {
+    return await _firestore.collection(_colletion).document(documentId).get();
+  }
+
+  addListener(Function f) {
+    _firestore.collection(_colletion).snapshots().listen(f);
   }
 
   @override
