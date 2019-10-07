@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/orders_tab.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/products_tab.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/enums/sort_criteria_enum.dart';
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               UsersTab(),
               OrdersTab(),
-              Container(color: Colors.green),
+              ProductsTab(),
             ],
           ),
         ),

@@ -1,3 +1,7 @@
+import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_bloc.dart';
+import 'package:gerenciamento_loja/src/app/repositories/product_repository.dart';
+import 'package:gerenciamento_loja/src/app/shared/blocs/product_bloc.dart';
+import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/products_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_header/order_header_bloc.dart';
@@ -19,6 +23,9 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => CategoryTileBloc()),
+        Bloc((i) => ProductBloc()),
+        Bloc((i) => ProductsTabBloc()),
         Bloc((i) => OrderBloc()),
         Bloc((i) => UserBloc()),
         Bloc((i) => OrderHeaderBloc()),
@@ -34,6 +41,7 @@ class AppModule extends ModuleWidget {
 
   @override
   List<Dependency> get dependencies => [
+        Dependency((i) => ProductRepository()),
         Dependency((i) => OrderRepository()),
         Dependency((i) => UserRepository()),
         Dependency((i) => LoginRepository()),
