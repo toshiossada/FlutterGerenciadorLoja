@@ -1,19 +1,20 @@
-import 'package:gerenciamento_loja/src/app/pages/product/components/images/images_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/imagesWidget/image_source_sheet/image_source_sheet_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/imagesWidget/images_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/input_field/input_field_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/order_tile/order_header/order_header_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/order_tile/order_tile_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/orders_tab_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/category_tile/category_tile_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/products_tab_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/users_tab/user_tile/user_tile_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/users_tab/users_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/repositories/product_repository.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/products_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/user_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_header/order_header_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_tile/order_tile_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/orders_tab_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/components/user_tile/user_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/repositories/orders_repository.dart';
 import 'package:gerenciamento_loja/src/app/repositories/user_repository.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/users_tab/users_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/Home/home_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/login/components/input_field/input_field_bloc.dart';
 import 'package:gerenciamento_loja/src/app/pages/login/login_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => ImageSourceSheetBloc()),
         Bloc((i) => ImagesBloc()),
         Bloc((i) => ProductBloc()),
         Bloc((i) => CategoryTileBloc()),

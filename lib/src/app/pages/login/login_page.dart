@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
+import 'package:gerenciamento_loja/src/app/components/input_field/input_field_widget.dart';
 import 'package:gerenciamento_loja/src/app/pages/home/home_page.dart';
-import 'package:gerenciamento_loja/src/app/pages/login/components/input_field/input_field_widget.dart';
-import 'package:gerenciamento_loja/src/app/pages/login/login_bloc.dart';
+
 import 'package:gerenciamento_loja/src/app/shared/enums/login_enum.dart';
+
+import 'login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   @override

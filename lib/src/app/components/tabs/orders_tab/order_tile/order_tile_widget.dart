@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/orders_tab/components/order_header/order_header_widget.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 
+
+import 'order_header/order_header_widget.dart';
 class OrderTileWidget extends StatelessWidget {
   final DocumentSnapshot order;
   final _orderBloc = AppModule.to.getBloc<OrderBloc>();

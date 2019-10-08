@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/pages/product/components/images/images_widget.dart';
-import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/imagesWidget/images_widget.dart';
+import 'package:gerenciamento_loja/src/app/validators/product_validator.dart';
+
+import 'product_bloc.dart';
 
 class ProductPage extends StatefulWidget {
   final String categoryId;
@@ -13,7 +15,7 @@ class ProductPage extends StatefulWidget {
   _ProductPageState createState() => _ProductPageState(categoryId, product);
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _ProductPageState extends State<ProductPage> with ProductValidator {
   final String categoryId;
   final DocumentSnapshot product;
   final ProductBloc _productBloc;
@@ -51,7 +53,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () {},
+            onPressed: saveProduct,
           ),
         ],
       ),
@@ -72,31 +74,31 @@ class _ProductPageState extends State<ProductPage> {
                 ImagesWidget(
                   context: context,
                   initialValue: snapshot.data["images"],
-                  onSaved: null,
-                  validator: null,
+                  onSaved: _productBloc.saveImages,
+                  validator: validateImages,
                 ),
                 TextFormField(
                   initialValue: snapshot.data['title'],
                   style: _fieldStyle,
                   decoration: _buildDecoration('Titulo'),
-                  onSaved: (t) {},
-                  validator: (t) {},
+                  onSaved: _productBloc.saveTitle,
+                  validator: validateTitle,
                 ),
                 TextFormField(
                   style: _fieldStyle,
                   initialValue: snapshot.data['description'],
                   decoration: _buildDecoration('Descrição'),
                   maxLines: 6,
-                  onSaved: (t) {},
-                  validator: (t) {},
+                  onSaved: _productBloc.saveDescription,
+                  validator: validateDescription,
                 ),
                 TextFormField(
                   style: _fieldStyle,
                   initialValue: snapshot.data['price']?.toStringAsFixed(2),
                   decoration: _buildDecoration('Preço'),
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  onSaved: (t) {},
-                  validator: (t) {},
+                  onSaved: _productBloc.savePrice,
+                  validator: validatePrice,
                 ),
               ],
             );
@@ -104,5 +106,11 @@ class _ProductPageState extends State<ProductPage> {
         ),
       ),
     );
+  }
+
+  saveProduct() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+    }
   }
 }

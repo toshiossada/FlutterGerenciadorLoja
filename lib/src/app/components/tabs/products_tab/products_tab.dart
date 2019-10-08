@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/pages/product/product_bloc.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_widget.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/products_tab_bloc.dart';
+
+import 'category_tile/category_tile_widget.dart';
+import 'products_tab_bloc.dart';
 
 class ProductsTab extends StatefulWidget {
   @override

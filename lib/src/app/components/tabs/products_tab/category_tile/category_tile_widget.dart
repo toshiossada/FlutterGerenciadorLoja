@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/pages/product/product_page.dart';
-import 'package:gerenciamento_loja/src/app/pages/tabs/products_tab/category_tile/category_tile_bloc.dart';
+
+import 'category_tile_bloc.dart';
 
 class CategoryTileWidget extends StatelessWidget {
   final DocumentSnapshot category;

@@ -3,11 +3,12 @@ import 'dart:async';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
-import 'package:gerenciamento_loja/src/app/pages/login/validators/Login_validator.dart';
 import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 import 'package:gerenciamento_loja/src/app/shared/enums/login_enum.dart';
+import 'package:gerenciamento_loja/src/app/validators/login_validator.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:rxdart/subjects.dart';
+
 
 class LoginBloc extends BlocBase with LoginValidator {
   var _loginRepository = AppModule.to.getDependency<LoginRepository>();

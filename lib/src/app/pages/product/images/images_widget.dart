@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_loja/src/app/components/imagesWidget/image_source_sheet/image_source_sheet_widget.dart';
+
+
+
+
 
 class ImagesWidget extends FormField<List> {
 
@@ -44,14 +49,14 @@ class ImagesWidget extends FormField<List> {
                     color: Colors.white.withAlpha(50),
                   ),
                   onTap: (){
-                    // showModalBottomSheet(context: context,
-                    //   builder: (context) => ImageSourceSheet(
-                    //     onImageSelected: (image){
-                    //       state.didChange(state.value..add(image));
-                    //       Navigator.of(context).pop();
-                    //     },
-                    //   )
-                    // );
+                    showModalBottomSheet(context: context,
+                      builder: (context) => ImageSourceSheetWidget(
+                        onImageSelected: (image){
+                          state.didChange(state.value..add(image));
+                          Navigator.of(context).pop();
+                        },
+                      )
+                    );
                   },
                 )
               ),
