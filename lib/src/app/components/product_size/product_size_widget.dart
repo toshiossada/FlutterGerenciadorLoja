@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'add_sizes_dialog/add_sizes_dialog_widget.dart';
+
+
 class ProductSizeWidget extends FormField<List> {
   ProductSizeWidget({
+    BuildContext context,
     List initialValue,
     FormFieldSetter<List> onSaved,
     FormFieldValidator<List> validator,
@@ -40,13 +44,18 @@ class ProductSizeWidget extends FormField<List> {
                           ))
                       .toList()
                         ..add(GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            var size = await showDialog(context: context, builder: (context) => AddSizesDialogWidget());
+                            if(size != null){
+                              state.didChange(state.value..add(size));
+                            }
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(4)),
                                 border: Border.all(
-                                    color: Colors.pinkAccent, width: 3)),
+                                    color: state.hasError ? Colors.red : Colors.pinkAccent, width: 3)),
                             alignment: Alignment.center,
                             child: Text(
                               '+',

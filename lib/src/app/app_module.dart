@@ -1,3 +1,4 @@
+import 'package:gerenciamento_loja/src/app/components/product_size/add_sizes_dialog/add_sizes_dialog_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/product_size/product_size_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/imagesWidget/image_source_sheet/image_source_sheet_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/imagesWidget/images_bloc.dart';
@@ -26,6 +27,7 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => AddSizesDialogBloc()),
         Bloc((i) => ProductSizeBloc()),
         Bloc((i) => ImageSourceSheetBloc()),
         Bloc((i) => ImagesBloc()),

@@ -6,10 +6,9 @@ import 'package:rxdart/subjects.dart';
 
 class ProductBloc extends BlocBase {
   String categoryId;
-  DocumentSnapshot product; 
+  DocumentSnapshot product;
   var _productRepository = AppModule.to.getDependency<ProductRepository>();
 
-  
   final _dataController = BehaviorSubject<Map>();
   final _loadingController = BehaviorSubject<bool>();
   final _createdController = BehaviorSubject<bool>();
@@ -58,6 +57,10 @@ class ProductBloc extends BlocBase {
     unsavedData['images'] = images;
   }
 
+  saveSizes(List sizes) {
+    unsavedData['sizes'] = sizes;
+  }
+
   Future<bool> saveProduct() async {
     _loadingController.add(true);
 
@@ -77,7 +80,6 @@ class ProductBloc extends BlocBase {
     } catch (e) {
       return false;
     } finally {
-      
       _loadingController.add(false);
     }
   }
@@ -89,15 +91,15 @@ class ProductBloc extends BlocBase {
         images.add(item);
         continue;
       }
-      var url = await _productRepository.uploadImage(
-          categoryId, productsId, item);
+      var url =
+          await _productRepository.uploadImage(categoryId, productsId, item);
 
       images.add(url);
     }
     unsavedData['images'] = images;
   }
 
-  deleteProduct(DocumentSnapshot p){
+  deleteProduct(DocumentSnapshot p) {
     p.reference.delete();
   }
 
