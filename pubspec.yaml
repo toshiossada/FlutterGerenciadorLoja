@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_launcher_icons: ^0.7.3
   shimmer: ^1.0.1
   flutter_speed_dial: ^1.2.1
   image_cropper: ^1.1.0
@@ -27,7 +28,7 @@ dependencies:
   dio: ^3.0.3
   rxdart: ^0.22.3
   bloc_pattern: ^2.3.4
-  
+
   flutter:
     sdk: flutter
 
@@ -39,13 +40,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -81,3 +80,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "icons/icon.png"
