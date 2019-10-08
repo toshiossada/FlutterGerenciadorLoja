@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.grey[850],
       body: StreamBuilder<LoginState>(
           stream: _loginBloc.outState,
-          initialData: LoginState.INITIAL,
+          initialData: LoginState.LOADING,
           builder: (context, snapshot) {
             switch (snapshot.data) {
               case LoginState.LOADING:

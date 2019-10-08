@@ -10,6 +10,10 @@ class CategoryTileBloc extends BlocBase {
     return _productRepository.getItems(category);
   }
 
+  deleteProduct(DocumentSnapshot p) {
+    p.reference.delete();
+  }
+
   //dispose will be called automatically by closing its streams
   @override
   void dispose() {
