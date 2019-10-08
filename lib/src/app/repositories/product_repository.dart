@@ -12,8 +12,8 @@ class ProductRepository extends Disposable {
     _firestore.collection(_colletion).snapshots().listen(f);
   }
 
-  Future<QuerySnapshot> getDocuments() {
-    return _firestore.collection(_colletion).getDocuments();
+  Stream<QuerySnapshot> getDocuments() {
+    return _firestore.collection(_colletion).snapshots();
   }
 
   Future<QuerySnapshot> getItems(DocumentSnapshot category) {

@@ -6,7 +6,7 @@ import 'package:gerenciamento_loja/src/app/repositories/product_repository.dart'
 class ProductsTabBloc extends BlocBase {
   final _productRepository = AppModule.to.getDependency<ProductRepository>();
 
-  Future<QuerySnapshot> getDocuments() {
+  Stream<QuerySnapshot> getDocuments() {
     return _productRepository.getDocuments();
   }
 

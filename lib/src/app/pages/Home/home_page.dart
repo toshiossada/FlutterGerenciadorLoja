@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:gerenciamento_loja/src/app/app_module.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/orders_tab.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/category_tile/edit_category_dialog/edit_category_dialog_widget.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/products_tab.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/users_tab/users_tab.dart';
 import 'package:gerenciamento_loja/src/app/shared/blocs/order_bloc.dart';
 import 'package:gerenciamento_loja/src/app/shared/enums/sort_criteria_enum.dart';
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -80,8 +80,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
-
   Widget _buildFloating() {
     switch (_page) {
       case 0:
@@ -117,6 +115,16 @@ class _HomePageState extends State<HomePage> {
                   _ordersBloc.setOrderCriteria(SortCriteria.READY_FIRST);
                 }),
           ],
+        );
+      case 2:
+        return FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.pinkAccent,
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) => EditCategoryDialogWidget());
+          },
         );
       default:
         return null;

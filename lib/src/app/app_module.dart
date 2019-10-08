@@ -7,6 +7,7 @@ import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/order_tile
 import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/order_tile/order_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/orders_tab/orders_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/category_tile/category_tile_bloc.dart';
+import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/category_tile/edit_category_dialog/edit_category_dialog_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/products_tab/products_tab_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/users_tab/user_tile/user_tile_bloc.dart';
 import 'package:gerenciamento_loja/src/app/components/tabs/users_tab/users_tab_bloc.dart';
@@ -27,6 +28,7 @@ import 'package:gerenciamento_loja/src/app/repositories/login_repository.dart';
 class AppModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
+        Bloc((i) => EditCategoryDialogBloc()),
         Bloc((i) => AddSizesDialogBloc()),
         Bloc((i) => ProductSizeBloc()),
         Bloc((i) => ImageSourceSheetBloc()),

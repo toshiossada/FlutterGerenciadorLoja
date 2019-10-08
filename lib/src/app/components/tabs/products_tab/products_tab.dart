@@ -16,8 +16,8 @@ class _ProductsTabState extends State<ProductsTab> with AutomaticKeepAliveClient
   Widget build(BuildContext context) {
     super.build(context);
     
-    return FutureBuilder(
-      future: _productBloc.getDocuments(),
+    return StreamBuilder(
+      stream: _productBloc.getDocuments(),
       builder: (context, snapshot) {
         if (!snapshot.hasData)
           return Center(
